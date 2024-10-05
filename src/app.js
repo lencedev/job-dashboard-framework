@@ -1,23 +1,27 @@
-// src/app.js
-
 import { render } from './core/index.js';
-import { JobComponent, attachJobClickHandler } from './components/JobComponent.js';
+import { Header } from './components/Header.js';
+import { Footer } from './components/Footer.js';
+import { JobList, attachJobListEvents } from './components/JobList/JobList.js';
 
 // Exemples de données de jobs
 const jobs = [
   { id: 1, title: 'Frontend Developer', shortDescription: 'Develop modern UI components' },
   { id: 2, title: 'Backend Developer', shortDescription: 'Build scalable APIs' },
-
-  // Ajoute d'autres jobs ici
+  // D'autres jobs...
 ];
 
-// Fonction pour rendre la liste de jobs
-function renderJobList(container) {
-  container.innerHTML = jobs.map(job => JobComponent(job)).join('');
-
-  // Ajouter les gestionnaires de clic après avoir rendu tous les composants
-  jobs.forEach(job => attachJobClickHandler(job));
+// Fonction pour rendre l'application
+function App() {
+  return `
+    ${Header()}
+    ${JobList(jobs)}
+    ${Footer()}
+  `;
 }
 
+// Rendre l'application principale
 const appContainer = document.getElementById('app');
-renderJobList(appContainer);
+render(App, appContainer);
+
+// Attacher les événements pour la JobList
+attachJobListEvents(jobs);
