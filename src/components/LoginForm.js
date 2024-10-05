@@ -1,6 +1,5 @@
 // src/components/LoginForm.js
 
-import '../css/LoginForm.css';
 
 export function LoginForm() {
   return `
