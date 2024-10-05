@@ -1,7 +1,6 @@
 // src/components/JobList.js
 
 import { JobComponent, attachJobClickHandler } from './JobComponent.js';
-import { render } from '../../core/index.js'
 
 export function JobList(jobs) {
   // Génère le HTML de la liste des jobs
