@@ -1,5 +1,4 @@
 // src/components/SignUpForm.js
-import '../css/SignUpForm.css';
 
 export function SignUpForm() {
   return `

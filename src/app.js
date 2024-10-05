@@ -3,6 +3,8 @@ import { Header } from './components/Header.js';
 import { Footer } from './components/Footer.js';
 import { setupJobAddition } from './components/JobManager.js';
 import { JobList, attachJobListEvents } from './components/JobList/JobList.js';
+import { SignUpForm } from './components/SignUpForm.js';
+import { setupAuthModal } from './components/AuthModal.js';
 
 // Exemples de données de jobs
 const jobs = [
@@ -17,7 +19,14 @@ const appContainer = document.getElementById('app');
 function App() {
     return `
     ${Header()}
-<div id="job-list-container">${JobList(jobs)}</div>
+    <!-- Section de modal cachée pour le formulaire d'inscription -->
+    <div id="auth-modal" class="modal hidden">
+      <div class="modal-content">
+        ${SignUpForm()}
+        <button id="close-modal-button">Fermer</button>
+      </div>
+    </div>
+    <div id="job-list-container">${JobList(jobs)}</div>
     ${Footer()}
   `;
 }
@@ -28,3 +37,4 @@ render(App, appContainer);
 // Attacher les événements pour la JobList
 attachJobListEvents(jobs);
 setupJobAddition(jobs, appContainer);
+setupAuthModal();
