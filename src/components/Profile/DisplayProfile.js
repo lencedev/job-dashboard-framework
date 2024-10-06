@@ -12,6 +12,7 @@ export function displayProfile() {
             <div class="profile-content">
                 <h2>Bienvenue, ${user.name}</h2>
                 <p>Email: ${user.email}</p>
+                <button id="disconnect-profile-button">Se déconnecter</button>
                 <button id="close-profile-button">Fermer</button>
             </div>
         </div>
