@@ -33,7 +33,6 @@ export function setupAuthModal() {
         authModal.classList.remove('show');
     });
 
-
     renderLoginForm();
 
     // Fonction pour rendre le formulaire de connexion
