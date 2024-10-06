@@ -2,9 +2,8 @@
 
 import { SignUpForm } from './SignUpForm.js';
 import { LoginForm } from './LoginForm.js';
-
-let users = []; // Tableau pour stocker les utilisateurs
-let currentUser = null; // Variable pour stocker l'utilisateur connecté
+import { displayProfile } from './Profile/DisplayProfile.js';
+import { getState, setState } from '../core/store.js'; // Importer le store
 
 export function setupAuthModal() {
     const authButton = document.getElementById('auth-button');
@@ -14,14 +13,15 @@ export function setupAuthModal() {
     // Vérifier si un utilisateur est connecté dans `localStorage`
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
-        currentUser = JSON.parse(storedUser); // Récupérer l'utilisateur connecté
-        updateAuthButtonToAccount(currentUser.name); // Mettre à jour le bouton de connexion
+        setState({ currentUser: JSON.parse(storedUser) }); // Mettre à jour l'état global
+        updateAuthButtonToAccount(getState().currentUser.name); // Mettre à jour le bouton de connexion
     }
 
     // Afficher la modal au clic sur le bouton de connexion
     authButton.addEventListener('click', () => {
+        const currentUser = getState().currentUser;
         if (currentUser) {
-            alert(`Bienvenue sur votre compte, ${currentUser.name}!`);
+            displayProfile();
         } else {
             authModal.classList.add('show');
             authModal.classList.remove('hidden');
@@ -77,7 +77,6 @@ export function setupAuthModal() {
         });
     }
 
-
     // Fonction de soumission du formulaire de connexion
     function handleLoginSubmit(event) {
         event.preventDefault();
@@ -85,18 +84,16 @@ export function setupAuthModal() {
         const loginEmail = document.getElementById('login-email').value;
         const loginPassword = document.getElementById('login-password').value;
 
-        // Vérifier si les informations de connexion correspondent à un utilisateur enregistré
+        // Récupérer les utilisateurs du store
+        const users = getState().users;
         const user = users.find(user => user.email === loginEmail && user.password === loginPassword);
 
         if (user) {
-            currentUser = user; // Stocker l'utilisateur connecté
-            updateAuthButtonToAccount(user.name); // Mettre à jour le bouton de connexion
-
-            // Stocker les informations de l'utilisateur dans `localStorage`
+            setState({ currentUser: user }); // Mettre à jour l'utilisateur connecté dans le store
             localStorage.setItem('currentUser', JSON.stringify(user));
-
+            updateAuthButtonToAccount(user.name);
             alert(`Bienvenue, ${user.name}! Vous êtes connecté.`);
-            authModal.classList.add('hidden'); // Fermer la modal après une connexion réussie
+            authModal.classList.add('hidden');
             authModal.classList.remove('show');
         } else {
             alert('Email ou mot de passe incorrect.');
@@ -114,20 +111,20 @@ export function setupAuthModal() {
             password: signupForm.password.value,
         };
 
-        // Ajouter l'utilisateur au tableau `users`
-        users.push(newUser);
-        currentUser = newUser; // Stocker l'utilisateur connecté
+        // Ajouter l'utilisateur au tableau `users` du store
+        const users = getState().users;
+        setState({ users: [...users, newUser], currentUser: newUser });
 
         // Stocker les informations de l'utilisateur dans `localStorage`
         localStorage.setItem('currentUser', JSON.stringify(newUser));
 
-        updateAuthButtonToAccount(newUser.name); // Mettre à jour le bouton de connexion
+        updateAuthButtonToAccount(newUser.name);
 
         signupForm.reset();
         authModal.classList.add('hidden');
         authModal.classList.remove('show');
 
-        console.log('Liste des utilisateurs :', users);
+        console.log('Liste des utilisateurs :', getState().users);
     }
 
     // Fonction pour mettre à jour le bouton de connexion en "Compte"
