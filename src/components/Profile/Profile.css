@@ -1,20 +1,77 @@
 /* src/css/Profile.css */
+
+/* Masquer le contenu */
 .hidden {
     display: none;
 }
 
+/* Conteneur principal de la page de profil */
 .profile-container {
-    /* Styles pour la page de profil */
-    position: fixed;
-    /* Superposer la page de profil */
+    position: fixed; /* Superposer la page de profil */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.5); /* Ajouter un overlay sombre */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    /* Superposer par-dessus le contenu principal */
+    z-index: 1000; /* Superposer par-dessus le contenu principal */
+}
+
+/* Contenu central de la page de profil */
+.profile-content {
+    background: #ffffff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Titre de la page de profil */
+.profile-content h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Informations de l'utilisateur */
+.profile-content p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 24px;
+}
+
+/* Bouton pour fermer la page de profil */
+#close-profile-button {
+    background-color: #ff5f57; /* Rouge pour attirer l'attention */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol du bouton */
+#close-profile-button:hover {
+    background-color: #ff2e2e;
+}
+
+/* Ajouter une animation pour l'apparition du profil */
+.profile-container.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Définir l'animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
