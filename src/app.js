@@ -17,19 +17,22 @@ const appContainer = document.getElementById('app');
 
 // Fonction pour rendre l'application
 function App() {
-    return `
-    ${Header()}
-    <!-- Section de modal cachée pour le formulaire d'inscription -->
-    <div id="auth-modal" class="modal hidden">
-      <div class="modal-content">
-        ${SignUpForm()}
-        <button id="close-modal-button">Fermer</button>
-      </div>
+  return `
+  ${Header()}
+  <!-- Section de modal cachée pour le formulaire d'inscription -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+      ${SignUpForm()}
+      <button id="close-modal-button">Fermer</button>
     </div>
-    <div id="job-list-container">${JobList(jobs)}</div>
-    ${Footer()}
-  `;
+  </div>
+  <!-- Section cachée pour la page de profil -->
+  <div id="profile-page" class="hidden"></div>
+  <div id="job-list-container">${JobList(jobs)}</div>
+  ${Footer()}
+`;
 }
+
 
 // Rendre l'application principale
 render(App, appContainer);
