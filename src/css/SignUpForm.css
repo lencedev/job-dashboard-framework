@@ -7,16 +7,13 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 #signup-form div {
     margin-bottom: 12px;
 }
-
 #signup-form label {
     display: block;
     margin-bottom: 4px;
 }
-
 #signup-form input {
     width: 100%;
     padding: 8px;
@@ -33,7 +30,6 @@
     border-radius: 4px;
     cursor: pointer;
 }
-
 #signup-form button:hover {
     background-color: #0056b3;
 }
