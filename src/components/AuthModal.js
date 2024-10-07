@@ -9,14 +9,12 @@ export function setupAuthModal() {
     const authButton = document.getElementById('auth-button');
     const authModal = document.getElementById('auth-modal');
     const closeModalButton = document.getElementById('close-modal-button');
-
     // Vérifier si un utilisateur est connecté dans `localStorage`
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
         setState({ currentUser: JSON.parse(storedUser) }); // Mettre à jour l'état global
         updateAuthButtonToAccount(getState().currentUser.name); // Mettre à jour le bouton de connexion
     }
-
     // Afficher la modal au clic sur le bouton de connexion
     authButton.addEventListener('click', () => {
         const currentUser = getState().currentUser;
