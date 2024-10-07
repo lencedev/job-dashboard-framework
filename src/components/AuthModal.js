@@ -27,14 +27,11 @@ export function setupAuthModal() {
             authModal.classList.remove('hidden');
         }
     });
-
     closeModalButton.addEventListener('click', () => {
         authModal.classList.add('hidden');
         authModal.classList.remove('show');
     });
-
     renderLoginForm();
-
     // Fonction pour rendre le formulaire de connexion
     function renderLoginForm() {
         authModal.innerHTML = `
@@ -43,7 +40,6 @@ export function setupAuthModal() {
         <button id="close-modal-button">Fermer</button>
       </div>
     `;
-
         // Attacher les événements pour la soumission du formulaire de connexion
         document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
         // Attacher l'événement pour passer à la création de compte
