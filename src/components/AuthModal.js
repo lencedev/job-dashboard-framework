@@ -46,13 +46,11 @@ export function setupAuthModal() {
 
         // Attacher les événements pour la soumission du formulaire de connexion
         document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
-
         // Attacher l'événement pour passer à la création de compte
         document.getElementById('create-account-link').addEventListener('click', (event) => {
             event.preventDefault();
             renderSignUpForm(); // Afficher le formulaire de création de compte
         });
-
         // Attacher l'événement pour fermer la modal
         document.getElementById('close-modal-button').addEventListener('click', () => {
             authModal.classList.add('hidden');
