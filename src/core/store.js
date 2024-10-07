@@ -17,7 +17,6 @@ export function getState() {
 export function setState(newState) {
     // Mettre à jour l'état en fusionnant avec le nouvel état
     state = { ...state, ...newState };
-
     // Notifier tous les écouteurs des changements d'état
     listeners.forEach(listener => listener(state));
 }
