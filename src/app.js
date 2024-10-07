@@ -10,6 +10,8 @@ import { setupAuthModal } from './components/AuthModal.js';
 const jobs = [
     { id: 1, title: 'Frontend Developer', shortDescription: 'Develop modern UI components' },
     { id: 2, title: 'Backend Developer', shortDescription: 'Build scalable APIs' },
+    { id: 3, title: 'Backend Developer', shortDescription: 'Build scalable APIs' },
+
     // D'autres jobs...
 ];
 
