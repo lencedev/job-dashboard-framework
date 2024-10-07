@@ -7,7 +7,6 @@ export function render(component, container) {
 export function addJob(newJob, jobs, renderFunction, container) {
     // Ajouter le nouveau job à la liste existante
     jobs.push(newJob);
-
     // Re-render la liste mise à jour
     render(renderFunction, container);
 }
