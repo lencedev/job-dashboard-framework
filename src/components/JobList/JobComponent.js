@@ -7,7 +7,6 @@ export function JobComponent(jobData) {
     function handleClick() {
         alert(`More details about: ${jobData.title}`);
     }
-
     // Retournons le HTML
     return `
       <div id="${jobId}" class="job-item" style="cursor: pointer;">
