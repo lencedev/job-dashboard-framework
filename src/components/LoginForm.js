@@ -1,6 +1,5 @@
 // src/components/LoginForm.js
 
-
 export function LoginForm() {
     return `
       <form id="login-form">
