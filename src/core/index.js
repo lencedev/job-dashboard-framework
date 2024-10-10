@@ -6,6 +6,4 @@ export function render(component, container) {
 export function addJob(newJob, jobs, renderFunction, container) {
     jobs.push(newJob);
     render(renderFunction, container);
-    radar(renderFunction, container);
-    remove(renderFunction, container);
 }
