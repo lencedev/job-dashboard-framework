@@ -18,7 +18,6 @@ export function displayProfile() {
     `;
 
     profileElement.classList.remove('hidden');
-
     // Ajouter un événement pour fermer le profil
     const closeButton = document.getElementById('close-profile-button');
     closeButton.addEventListener("click", () => {
