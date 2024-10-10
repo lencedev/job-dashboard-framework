@@ -68,7 +68,6 @@
     transition: background-color 0.3s ease;
 }
 
-/* Effet au survol du bouton */
 #close-profile-button:hover {
     background-color: #ff2e2e;
 }
@@ -76,13 +75,9 @@
 #disconnect-profile-button:hover {
     background-color: #ff2e2e;
 }
-
-/* Ajouter une animation pour l'apparition du profil */
 .profile-container.fade-in {
     animation: fadeIn 0.3s ease-in-out;
 }
-
-/* Définir l'animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
